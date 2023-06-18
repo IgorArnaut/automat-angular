@@ -1,0 +1,20 @@
+<table class="table table-borderless table-dark">
+  <tr *ngFor="let red of artikli">
+    <td *ngFor="let artikal of red">
+      <div class="container text-center">
+        <div class="row">
+          <span
+            [class]="artikal.kolicina > 0 ? 'text-success' : 'text-danger'"
+            >{{ artikal.naziv }}</span
+          >
+        </div>
+        <div class="row">
+          <div class="col-6 bg-danger">{{ artikal.sifra }}</div>
+          <div class="col-6 bg-dark">{{ artikal.cena }} din.</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<app-kupovina-forma />
