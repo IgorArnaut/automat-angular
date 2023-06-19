@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Artikal } from '../model/artikal';
+import { ArtikalService } from '../artikal.service';
 
 @Component({
   selector: 'app-tabela-artikala',
@@ -8,20 +9,11 @@ import { Artikal } from '../model/artikal';
 })
 export class TabelaArtikalaComponent implements OnInit {
   @Input() public artikli: Artikal[][];
+  public artikalClasses: { [key: string]: boolean };
+
+  constructor(private as: ArtikalService) {}
 
   ngOnInit(): void {
-    let width: number = 9;
-    let height: number = 6;
-    this.artikli = new Array(height);
-
-    for (let i: number = 0; i < height; i++) {
-      this.artikli[i] = new Array(width);
-
-      for (let j: number = 0; j < width; j++) {
-        const id: number = 10 * (i + 1) + j + 1;
-        const count = i * width + j;
-        this.artikli[i][j] = new Artikal(`${id}`, `Artikal ${count}`, 100);
-      }
-    }
+    this.as.getArtikli().subscribe((artikli) => (this.artikli = artikli));
   }
 }

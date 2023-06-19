@@ -1,25 +1,5 @@
-<form class="form" [formGroup]="kupovinaForma">
+<form class="form" [formGroup]="kupovinaForma" (ngSubmit)="kupi()">
   <div class="container">
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6">
-        <label for="sifra" class="form-label fw-semibold"
-          >Unesite sifru artikla:</label
-        >
-        <input
-          id="sifra"
-          type="number"
-          class="form-control"
-          formControlName="sifra"
-        />
-
-        <button class="btn btn-secondary fw-bold" (click)="unesiSifru()">
-          Unesi
-        </button>
-      </div>
-      <div class="col-3"></div>
-    </div>
-
     <div class="row">
       <div class="col-3"></div>
       <div class="col-6">
@@ -41,7 +21,17 @@
     <div class="row">
       <div class="col-3"></div>
       <div class="col-6">
-        <button class="btn btn-primary fw-bold">Kupi</button>
+        <label for="sifra" class="form-label fw-semibold"
+          >Unesite sifru artikla:</label
+        >
+        <input
+          id="sifra"
+          type="number"
+          class="form-control"
+          formControlName="sifra"
+        />
+
+        <button class="btn btn-primary fw-bold" type="submit">Kupi</button>
       </div>
       <div class="col-3"></div>
     </div>

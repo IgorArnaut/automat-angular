@@ -6,10 +6,9 @@ import { AppComponent } from './app.component';
 import { TabelaArtikalaComponent } from './tabela-artikala/tabela-artikala.component';
 import { KupovinaFormaComponent } from './kupovina-forma/kupovina-forma.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ArtikalComponent } from './artikal/artikal.component';
 
 @NgModule({
-  declarations: [AppComponent, TabelaArtikalaComponent, KupovinaFormaComponent, ArtikalComponent],
+  declarations: [AppComponent, TabelaArtikalaComponent, KupovinaFormaComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
