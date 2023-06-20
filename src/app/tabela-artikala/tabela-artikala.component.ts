@@ -8,7 +8,7 @@ import { ArtikalService } from '../artikal.service';
   styleUrls: ['./tabela-artikala.component.css'],
 })
 export class TabelaArtikalaComponent implements OnInit {
-  @Input() public artikli: Artikal[][];
+  public artikli: Artikal[][];
   public artikalClasses: { [key: string]: boolean };
 
   constructor(private as: ArtikalService) {}

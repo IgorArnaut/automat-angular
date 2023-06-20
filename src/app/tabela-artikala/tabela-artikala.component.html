@@ -1,26 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <table class="table table-borderless">
-        <tr *ngFor="let red of artikli">
-          <td *ngFor="let artikal of red">
-            <div class="container text-center">
-              <div class="row">
-                <p>{{ artikal.naziv }}</p>
-                <p [class]="artikal.postoji() ? 'text-success' : 'text-danger'">
-                  {{ artikal.kolicina }}
-                </p>
-              </div>
-              <div class="row fw-semibold">
-                <div class="col-6 text-bg-danger">{{ artikal.sifra }}</div>
-                <div class="col-6 text-bg-dark">{{ artikal.cena }}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-2"></div>
-  </div>
-</div>
+<table class="table table-borderless bg-dark border border-2 border-black mb-0">
+  <tr *ngFor="let red of artikli">
+    <td *ngFor="let artikal of red">
+      <app-artikal [artikal]="artikal" />
+    </td>
+  </tr>
+</table>
+<app-kupovina-forma />
