@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabelaArtikalaComponent } from './tabela-artikala/tabela-artikala.component';
-import { PrijavaFormaComponent } from './prijava-forma/prijava-forma.component';
+import { PrijavaFormaComponent } from './forme/prijava-forma/prijava-forma.component';
 
 const routes: Routes = [
   {
