@@ -1,13 +1,11 @@
-<table
-  class="table table-borderless bg-dark m-0 fw-semibold text-light text-center"
->
-  <tr rowspan="2">
+<div class="container bg-dark m-0 fw-semibold text-light text-center">
+  <div rowspan="2" class="row">
     <img class="img-thumbnail rounded-0" src="{{ artikal.slika }}" />
     <p>{{ artikal.kolicina }}</p>
-  </tr>
+  </div>
 
-  <tr>
-    <td class="bg-danger bg-gradient">{{ artikal.sifra }}</td>
-    <td class="bg-black bg-gradient">{{ artikal.cena }}</td>
-  </tr>
-</table>
+  <div class="row">
+    <td class="col-6 bg-danger bg-gradient">{{ artikal.sifra }}</td>
+    <td class="col-6 bg-black bg-gradient">{{ artikal.cena }}</td>
+  </div>
+</div>
