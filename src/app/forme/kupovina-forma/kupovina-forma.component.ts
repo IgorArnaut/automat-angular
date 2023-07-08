@@ -18,7 +18,10 @@ export class KupovinaFormaComponent implements OnInit {
   ngOnInit(): void {
     this.kupovinaForma = this.fb.group({
       sifra: ['', [Validators.required]],
-      novac: ['', [Validators.required, Validators.min(10), Validators.max(200)]],
+      novac: [
+        '',
+        [Validators.required, Validators.min(10), Validators.max(200)],
+      ],
     });
   }
 
@@ -38,18 +41,6 @@ export class KupovinaFormaComponent implements OnInit {
 
   public kupi(): void {
     const sifra: string = this.kupovinaForma.get('sifra')?.value;
-    console.log(`sifra: ${sifra}`)
-
-    this.as.getArtikli().pipe(map(artikli => {
-      const width: number = 9;
-      const height:number = 6;
-
-      for (let i: number = 0; i < height; i++) {
-        for (let j: number = 0; j < width; j++)
-          this.plati(artikli[i][j], sifra);
-      }
-
-      return artikli;
-    }));
+    console.log(`sifra: ${sifra}`);
   }
 }

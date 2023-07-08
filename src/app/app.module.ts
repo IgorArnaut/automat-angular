@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { TabelaArtikalaComponent } from './tabela-artikala/tabela-artikala.component';
 import { KupovinaFormaComponent } from './forme/kupovina-forma/kupovina-forma.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrijavaFormaComponent } from './forme/prijava-forma/prijava-forma.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ArtikalComponent } from './artikal/artikal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ArtikalComponent } from './artikal/artikal.component';
     AppRoutingModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

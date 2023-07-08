@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Artikal } from './model/artikal';
-import { ARTIKLI } from './artikli';
-import { Observable, of } from 'rxjs';
+import { map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArtikalService {
-  constructor() {}
+  private baseUrl: string = 'http://localhost/automat-php';
 
-  getArtikli(): Observable<Artikal[][]> {
-    return of(ARTIKLI);
+  constructor(private http: HttpClient) {}
+
+  getAll() {
+    return this.http.get<Artikal[]>(`${this.baseUrl}/list`);
   }
 }
