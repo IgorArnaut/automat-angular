@@ -9,10 +9,11 @@ import { ArtikalService } from '../../artikal.service';
   styleUrls: ['./kupovina-forma.component.css'],
 })
 export class KupovinaFormaComponent implements OnInit {
-  public kupovinaForma: FormGroup;
-  public novac: number = 0;
-  public success = '';
-  public error = '';
+  kupovinaForma: FormGroup;
+  artikal: Artikal;
+  novac: number = 0;
+  success = '';
+  error = '';
 
   constructor(private fb: FormBuilder, private as: ArtikalService) {}
 
@@ -32,18 +33,18 @@ export class KupovinaFormaComponent implements OnInit {
     this.novac += novac;
   }
 
-  private pronadji(sifra: string): Artikal {
-    let artikal: Artikal = {
-      sifra: '',
-      naziv: '',
-      cena: 0,
-      kolicina: 0,
-      slika: '',
-    };
+  // Updates money in service, finds product by id from form and then updates it
+  kupi(): void {
+    this.as.novac += this.novac;
+    this.novac = 0;
+
+    const sifra: string = this.kupovinaForma.get('sifra')?.value;
 
     this.as.findBySifra(sifra).subscribe({
-      next: (res) => {
-        artikal = res;
+      next: (data: Artikal) => {
+        console.log(data);
+        this.artikal = data;
+        console.log(this.artikal);
       },
       error: (err) => {
         console.log(err);
@@ -51,21 +52,7 @@ export class KupovinaFormaComponent implements OnInit {
       },
     });
 
-    console.log(artikal);
-    return artikal;
-  }
-
-  kupi(): void {
-    this.as.novac += this.novac;
-    this.novac = 0;
-
-    const sifra: string = this.kupovinaForma.get('sifra')?.value;
-    console.log(`sifra: ${sifra}`);
-    const artikal = this.pronadji(sifra);
-    console.log(`sifra: ${artikal.sifra}`);
-
-    /*
-    this.as.update(artikal).subscribe({
+    this.as.update(this.artikal).subscribe({
       next: () => {
         this.success = 'Updated successfully';
       },
@@ -73,6 +60,5 @@ export class KupovinaFormaComponent implements OnInit {
         this.error = err;
       },
     });
-    */
   }
 }

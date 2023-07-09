@@ -7,5 +7,5 @@ import { Artikal } from '../model/artikal';
   styleUrls: ['./artikal.component.css'],
 })
 export class ArtikalComponent {
-  @Input() public artikal: Artikal;
+  @Input() artikal: Artikal;
 }

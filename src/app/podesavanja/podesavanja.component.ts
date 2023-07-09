@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Artikal } from '../model/artikal';
 import { ArtikalService } from '../artikal.service';
+import { Artikal } from '../model/artikal';
 
 @Component({
   selector: 'app-podesavanja',
@@ -8,10 +8,10 @@ import { ArtikalService } from '../artikal.service';
   styleUrls: ['./podesavanja.component.css'],
 })
 export class PodesavanjaComponent {
-  public artikli: Artikal[];
-  public artikalClasses: { [key: string]: boolean };
-  public error: string = '';
-  public success: string = '';
+  artikli: Artikal[];
+  artikalClasses: { [key: string]: boolean };
+  error: string = '';
+  success: string = '';
 
   constructor(private as: ArtikalService) {}
 
@@ -30,5 +30,11 @@ export class PodesavanjaComponent {
         this.error = err;
       },
     });
+  }
+
+  dopuni(artikal: Artikal): void {
+    console.log(artikal);
+    artikal.kolicina = 10;
+    console.log(artikal);
   }
 }

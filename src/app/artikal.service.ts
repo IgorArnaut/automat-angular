@@ -12,17 +12,20 @@ export class ArtikalService {
 
   constructor(private http: HttpClient) {}
 
-  public getAll(): Observable<Artikal[]> {
+  getAll(): Observable<Artikal[]> {
     return this.http.get<Artikal[]>(`${this.baseUrl}/list`);
   }
 
-  public findBySifra(sifra: string) {
+  // Finds product by its id
+  findBySifra(sifra: string): Observable<Artikal> {
     const params = new HttpParams().set('sifra', sifra);
 
     return this.http.get<Artikal>(`${this.baseUrl}/find`, { params: params });
   }
 
-  public update(artikal: Artikal) {
+  // Updates amount of product
+  update(artikal: Artikal) {
+    artikal.kolicina = artikal.kolicina - 1 > 0 ? artikal.kolicina - 1 : 0;
     return this.http.put(`${this.baseUrl}/update`, { data: artikal });
   }
 }

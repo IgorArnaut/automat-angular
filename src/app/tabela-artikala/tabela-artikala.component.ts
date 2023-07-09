@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Artikal } from '../model/artikal';
 import { ArtikalService } from '../artikal.service';
 
@@ -8,10 +8,10 @@ import { ArtikalService } from '../artikal.service';
   styleUrls: ['./tabela-artikala.component.css'],
 })
 export class TabelaArtikalaComponent implements OnInit {
-  public artikli: Artikal[][];
-  public artikalClasses: { [key: string]: boolean };
-  public error: string = '';
-  public success: string = '';
+  artikli: Artikal[][];
+  artikalClasses: { [key: string]: boolean };
+  error: string = '';
+  success: string = '';
 
   constructor(private as: ArtikalService) {}
 
