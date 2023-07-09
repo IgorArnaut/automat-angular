@@ -32,13 +32,13 @@ export class TabelaArtikalaComponent implements OnInit {
 
           for (let j: number = 0; j < width; j++) {
             let artikal = data[i * width + j];
-            this.artikli[i][j] = new Artikal(
-              artikal.sifra,
-              artikal.naziv,
-              artikal.cena,
-              artikal.kolicina,
-              artikal.slika
-            );
+            this.artikli[i][j] = {
+              sifra: artikal.sifra,
+              naziv: artikal.naziv,
+              cena: artikal.cena,
+              kolicina: artikal.kolicina,
+              slika: artikal.slika,
+            };
           }
         }
 

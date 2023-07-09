@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Artikal } from '../../model/artikal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArtikalService } from '../../artikal.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-kupovina-forma',
@@ -11,7 +10,9 @@ import { map } from 'rxjs';
 })
 export class KupovinaFormaComponent implements OnInit {
   public kupovinaForma: FormGroup;
-  public ubaceno: number = 0;
+  public novac: number = 0;
+  public success = '';
+  public error = '';
 
   constructor(private fb: FormBuilder, private as: ArtikalService) {}
 
@@ -25,22 +26,53 @@ export class KupovinaFormaComponent implements OnInit {
     });
   }
 
-  public ubaciNovac(): void {
+  ubaciNovac(): void {
     const novac: number = this.kupovinaForma.get('novac')?.value;
-    console.log(`novac ${novac}`);
-    this.ubaceno += novac;
+    console.log(`novac: ${novac}`);
+    this.novac += novac;
   }
 
-  private plati(artikal: Artikal, sifra: string): void {
-    if (artikal.sifra === sifra) {
-      artikal.smanjiKolicinu();
-      this.ubaceno -= artikal.cena;
-      console.log(`ubaceno ${this.ubaceno}`);
-    }
+  private pronadji(sifra: string): Artikal {
+    let artikal: Artikal = {
+      sifra: '',
+      naziv: '',
+      cena: 0,
+      kolicina: 0,
+      slika: '',
+    };
+
+    this.as.findBySifra(sifra).subscribe({
+      next: (res) => {
+        artikal = res;
+      },
+      error: (err) => {
+        console.log(err);
+        this.error = err;
+      },
+    });
+
+    console.log(artikal);
+    return artikal;
   }
 
-  public kupi(): void {
+  kupi(): void {
+    this.as.novac += this.novac;
+    this.novac = 0;
+
     const sifra: string = this.kupovinaForma.get('sifra')?.value;
     console.log(`sifra: ${sifra}`);
+    const artikal = this.pronadji(sifra);
+    console.log(`sifra: ${artikal.sifra}`);
+
+    /*
+    this.as.update(artikal).subscribe({
+      next: () => {
+        this.success = 'Updated successfully';
+      },
+      error: (err) => {
+        this.error = err;
+      },
+    });
+    */
   }
 }

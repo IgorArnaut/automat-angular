@@ -10,6 +10,7 @@ import { PrijavaFormaComponent } from './forme/prijava-forma/prijava-forma.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { ArtikalComponent } from './artikal/artikal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PodesavanjaComponent } from './podesavanja/podesavanja.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     PrijavaFormaComponent,
     NavbarComponent,
     ArtikalComponent,
+    PodesavanjaComponent,
   ],
   imports: [
     BrowserModule,
