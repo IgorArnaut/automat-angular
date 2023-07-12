@@ -8,18 +8,18 @@ export class AuthService {
   prijavljen: boolean = false;
   url: string | null = null;
 
-  prijava(korime: string, lozinka: string): Observable<boolean> {
-    this.prijavljen = korime === 'admin' && lozinka === 'admin';
+  prijaviSe(korIme: string, lozinka: string): Observable<boolean> {
+    this.prijavljen = korIme == 'admin' && lozinka == 'admin';
     localStorage.setItem('prijavljen', this.prijavljen ? 'true' : 'false');
     return of(this.prijavljen).pipe(
       delay(1000),
       tap((val) => {
-        console.log(`Je uspesna prijava: ${val}`);
+        console.log(`Uspensna prijava: ${val}`);
       })
     );
   }
 
-  odjava(): void {
+  odjaviSe(): void {
     this.prijavljen = false;
     localStorage.removeItem('prijavljen');
   }

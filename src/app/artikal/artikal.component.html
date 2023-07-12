@@ -1,7 +1,9 @@
 <div class="container bg-dark m-0 fw-semibold text-light text-center">
-  <div rowspan="2" class="row">
-    <img class="img-thumbnail rounded-0" src="{{ artikal.slika }}" />
-    <p>{{ artikal.kolicina }}</p>
+  <div class="row">
+    <img
+      class="img-thumbnail rounded-0"
+      [src]="postoji() ? artikal.slika : 'https://placehold.co/500x500'"
+    />
   </div>
 
   <div class="row">

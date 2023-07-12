@@ -10,31 +10,43 @@ import { Artikal } from '../model/artikal';
 export class PodesavanjaComponent {
   artikli: Artikal[];
   artikalClasses: { [key: string]: boolean };
-  error: string = '';
   success: string = '';
 
   constructor(private as: ArtikalService) {}
 
   ngOnInit(): void {
-    this.getArtikli();
+    this.vratiSveArtikle();
   }
 
-  getArtikli(): void {
-    this.as.getAll().subscribe({
-      next: (data: Artikal[]) => {
+  vratiSveArtikle(): void {
+    this.as.vratiSve().subscribe({
+      next: (data) => {
         this.artikli = data;
-        this.success = 'Successful retrieval of the list';
+        this.success = 'Uspesno dobavljanje liste';
       },
-      error: (err) => {
-        console.log(err);
-        this.error = err;
+      error: (e) => {
+        console.error(e);
       },
     });
   }
 
-  dopuni(artikal: Artikal): void {
-    console.log(artikal);
-    artikal.kolicina = 10;
-    console.log(artikal);
+  // Resets the amount of product
+  dopuniArtikal(artikal: Artikal): void {
+    const data = {
+      sifra: artikal.sifra,
+      naziv: artikal.naziv,
+      cena: artikal.cena,
+      kolicina: 10,
+      slika: artikal.slika,
+    };
+
+    this.as.azuriraj(artikal.sifra, data).subscribe({
+      next: () => {
+        this.success = 'Uspesno azuriranje artikla';
+      },
+      error: (e) => {
+        console.error(e);
+      },
+    });
   }
 }

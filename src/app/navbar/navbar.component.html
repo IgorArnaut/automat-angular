@@ -3,16 +3,33 @@
 >
   <a
     class="navbar-brand text-light"
-    routerLink="/tabela-artikala"
+    routerLink="/artikli"
     routerLinkActive="active"
     ariaCurrentWhenActive="page"
     >Automat</a
   >
   <a
+    *ngIf="!jePrijavljen()"
     class="navbar-link text-bg-secondary bg-gradient text-decoration-none p-3"
-    routerLink="prijava"
+    routerLink="/prijava"
     routerLinkActive="active"
     ariaCurrentWhenActive="page"
     >Prijava</a
+  >
+  <a
+    *ngIf="jePrijavljen()"
+    class="navbar-link text-bg-secondary bg-gradient text-decoration-none p-3"
+    routerLink="/podesavanja"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Podesavanja</a
+  >
+  <a
+    *ngIf="jePrijavljen()"
+    class="navbar-link text-bg-secondary bg-gradient text-decoration-none p-3"
+    routerLink="/odjava"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Odjava</a
   >
 </nav>

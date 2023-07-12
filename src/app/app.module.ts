@@ -1,33 +1,34 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { TabelaArtikalaComponent } from './tabela-artikala/tabela-artikala.component';
-import { KupovinaFormaComponent } from './forme/kupovina-forma/kupovina-forma.component';
-import { PrijavaFormaComponent } from './forme/prijava-forma/prijava-forma.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ArtikalComponent } from './artikal/artikal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { ArtikliComponent } from './artikli/artikli.component';
+import { KupovinaComponent } from './forme/kupovina/kupovina.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { OdjavaComponent } from './odjava/odjava.component';
 import { PodesavanjaComponent } from './podesavanja/podesavanja.component';
+import { PrijavaComponent } from './forme/prijava/prijava.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TabelaArtikalaComponent,
-    KupovinaFormaComponent,
-    PrijavaFormaComponent,
-    NavbarComponent,
     ArtikalComponent,
+    ArtikliComponent,
+    KupovinaComponent,
+    NavbarComponent,
+    OdjavaComponent,
     PodesavanjaComponent,
+    PrijavaComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

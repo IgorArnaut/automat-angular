@@ -8,4 +8,8 @@ import { Artikal } from '../model/artikal';
 })
 export class ArtikalComponent {
   @Input() artikal: Artikal;
+
+  postoji(): boolean {
+    return this.artikal.kolicina > 0;
+  }
 }

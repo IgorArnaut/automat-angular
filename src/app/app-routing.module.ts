@@ -1,18 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TabelaArtikalaComponent } from './tabela-artikala/tabela-artikala.component';
-import { PrijavaFormaComponent } from './forme/prijava-forma/prijava-forma.component';
+import { ArtikliComponent } from './artikli/artikli.component';
+import { PrijavaComponent } from './forme/prijava/prijava.component';
+import { PodesavanjaComponent } from './podesavanja/podesavanja.component';
+import { podesavanjaGuard } from './podesavanja.guard';
+import { OdjavaComponent } from './odjava/odjava.component';
 
 const routes: Routes = [
   {
-    path: 'tabela-artikala',
-    component: TabelaArtikalaComponent,
+    path: 'artikli',
+    component: ArtikliComponent,
   },
   {
     path: 'prijava',
-    component: PrijavaFormaComponent,
+    component: PrijavaComponent,
   },
-  { path: '**', component: TabelaArtikalaComponent },
+  {
+    path: 'odjava',
+    component: OdjavaComponent,
+  },
+  {
+    path: 'podesavanja',
+    component: PodesavanjaComponent,
+    canActivate: [podesavanjaGuard],
+  },
+  { path: '**', component: ArtikliComponent },
 ];
 
 @NgModule({

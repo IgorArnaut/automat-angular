@@ -16,9 +16,13 @@
       <td>{{ artikal.sifra }}</td>
       <td>{{ artikal.naziv }}</td>
       <td>{{ artikal.cena }}</td>
-      <td>{{ artikal.sifra }}</td>
+      <td>{{ artikal.kolicina }}</td>
       <td>
-        <button type="button" class="btn btn-primary" (click)="dopuni(artikal)">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="dopuniArtikal(artikal)"
+        >
           Dopuni
         </button>
       </td>
